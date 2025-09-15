@@ -1,12 +1,14 @@
 import path from 'path';
-import {defineConfig} from 'vitest/config';
-import {loadEnv} from 'vite';
+import { defineConfig } from 'vitest/config';
+import { loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import UnplugInIcons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
+import vueDevTools from 'vite-plugin-vue-devtools';
+import mkcert from 'vite-plugin-mkcert';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd());
@@ -15,6 +17,11 @@ export default defineConfig(({ mode }) => {
         base: env.VITE_ROUTER_MODE === 'hash' ? '' : '/',
         plugins: [
             vue(),
+            vueDevTools(),
+            // Creates a custom SSL certificate valid for the local machine.
+            // Using this plugin requires admin rights on the first dev-mode launch.
+            // https://www.npmjs.com/package/vite-plugin-mkcert
+            process.env.HTTPS ? mkcert() : undefined,
             tailwindcss(),
             AutoImport({
                 include: [/\.[tj]sx?$/, /\.vue\??/],
@@ -73,9 +80,9 @@ export default defineConfig(({ mode }) => {
                 defaultClass: 'unplugin-icon'
             })
         ],
-        esbuild: {
-            drop: ['console', 'debugger']
-        },
+        // esbuild: {
+        //     drop: ['console', 'debugger']
+        // },
         resolve: {
             alias: [
                 {
@@ -95,8 +102,11 @@ export default defineConfig(({ mode }) => {
                 }
             ]
         },
+        publicDir: './public',
         server: {
             port: parseInt(env.VITE_PORT) || 5173,
-        },
+            // Exposes your dev server and makes it accessible for the devices in the same network.
+            host: true
+        }
     };
 });
