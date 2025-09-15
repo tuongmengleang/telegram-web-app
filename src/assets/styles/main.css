@@ -1,0 +1,96 @@
+/* --- Quicksand Font Definition (for English) --- */
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/quicksand-v36-latin-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/quicksand-v36-latin-regular.woff2') format('woff2');
+    font-weight: 400; /* normal */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/quicksand-v36-latin-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/quicksand-v36-latin-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/quicksand-v36-latin-700.woff2') format('woff2');
+    font-weight: 700; /* bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* --- Kantumruy Pro Font Definition (for Khmer) --- */
+@font-face {
+    font-family: 'Kantumruy Pro';
+    src: url('../fonts/kantumruy-pro-v11-khmer_latin-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kantumruy Pro';
+    src: url('../fonts/kantumruy-pro-v11-khmer_latin-regular.woff2') format('woff2');
+    font-weight: 400; /* normal */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kantumruy Pro';
+    src: url('../fonts/kantumruy-pro-v11-khmer_latin-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kantumruy Pro';
+    src: url('../fonts/kantumruy-pro-v11-khmer_latin-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kantumruy Pro';
+    src: url('../fonts/kantumruy-pro-v11-khmer_latin-700.woff2') format('woff2');
+    font-weight: 700; /* bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* --- Global Font Application --- */
+body {
+    /* This is the magic! The browser will try Quicksand first.
+       If a character (like Khmer script) is not found, it falls back to Kantumruy Pro. */
+    font-family: 'Quicksand', 'Kantumruy Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background: var(--tg-theme-secondary-bg-color, white);
+    color: var(--tg-theme-text-color, black);
+    /*background: url('@/assets/images/bg-dark.png') center center no-repeat;*/
+}
