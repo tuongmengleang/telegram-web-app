@@ -1,8 +1,12 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import AppLayout from '@/layouts/default.vue';
+import { useBackButton } from '@/composables/useBackButton.ts';
+
+useBackButton();
 </script>
 
 <template>
-  <RouterView />
+    <AppLayout>
+        <RouterView />
+    </AppLayout>
 </template>
-
-<style scoped></style>
