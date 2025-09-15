@@ -1,6 +1,6 @@
 import path from 'path';
-import { defineConfig } from 'vitest/config';
-import { loadEnv } from 'vite';
+import {defineConfig} from 'vitest/config';
+import {loadEnv} from 'vite';
 import vue from '@vitejs/plugin-vue';
 import tailwindcss from '@tailwindcss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
@@ -94,6 +94,9 @@ export default defineConfig(({ mode }) => {
                     replacement: path.resolve(__dirname, 'src')
                 }
             ]
-        }
+        },
+        server: {
+            port: parseInt(env.VITE_PORT) || 5173,
+        },
     };
 });
